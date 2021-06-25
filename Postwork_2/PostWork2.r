@@ -73,6 +73,9 @@ Ligas <- lapply(Ligas, mutate, Date = as.Date(Date,"%d/%m/%y"))
 
 #El data frame que resulta es el siguiente:
 
-PrimDiv <- rbind(Lig18,Lig19,Lig20)
+Ligas <- do.call(rbind, Ligas)
+
+# opcional
+#PrimDiv <- rbind(Lig18,Lig19,Lig20)
 
 
