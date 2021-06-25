@@ -1,12 +1,30 @@
 #PostWork Sesion 2
 
-#1. Leemos los datos de soccer de las temporadas 2017/2018, 2018/2019 y 2019/2020 de la primera división de la liga española.
+# Descargamos los datos del servidor si no los tenemos
 
-Prim18 <- read.csv("SP1.csv")
-Prim19 <- read.csv("SP2.csv")
-Prim20 <- read.csv("SP3.csv")
+if (all(file.exists(c("./data/DataPostwork2/SP1.csv","./data/DataPostwork2/SP2.csv",
+                      "./data/DataPostwork2/SP3.csv"))) == FALSE){
 
-#2. Revisamos la estructura de de los data frames con las siguientes funciones: 
+    # Si al memos un .cvs no se descargÃ³, volvemos a descargar todos
+
+    url1 <- "https://www.football-data.co.uk/mmz4281/1718/SP1.csv"
+    download.file(url = url1, destfile = "./Data/DataPostwork2/SP1.csv", mode = "wb")
+
+    url2 <- "https://www.football-data.co.uk/mmz4281/1819/SP1.csv"
+    download.file(url = url2, destfile = "./Data/DataPostwork2/SP2.csv", mode = "wb")
+
+    url3 <- "https://www.football-data.co.uk/mmz4281/1920/SP1.csv"
+    download.file(url = url3, destfile = "./Data/DataPostwork2/SP3.csv", mode = "wb")
+}
+
+
+#1. Leemos los datos de soccer de las temporadas 2017/2018, 2018/2019 y 2019/2020 de la primera divisi?n de la liga espa?ola.
+
+Prim18 <- read.csv("./Data/DataPostwork2/SP1.csv")
+Prim19 <- read.csv("./Data/DataPostwork2/SP2.csv")
+Prim20 <- read.csv("./Data/DataPostwork2/SP3.csv")
+
+#2. Revisamos la estructura de de los data frames con las siguientes funciones:
 
 str(Prim18)
 str(Prim19) #Estructura
@@ -21,10 +39,10 @@ View(Prim19) #Visor de datos
 View(Prim20)
 
 summary(Prim18)
-summary(Prim19) #Descripción de elementos de cada data frame
+summary(Prim19) #Descripci?n de elementos de cada data frame
 summary(Prim20)
 
-#3.Utilizando la función select del paquete dplyr seleccionaremos sólo algunas columnas de nuestros data frames.
+#3.Utilizando la funci?n select del paquete dplyr seleccionaremos s?lo algunas columnas de nuestros data frames.
 
 library(dplyr)
 
@@ -32,8 +50,8 @@ Lig18 <- select(Prim18,"Date","HomeTeam","AwayTeam","FTHG","FTAG","FTR")
 Lig19 <- select(Prim19,"Date","HomeTeam","AwayTeam","FTHG","FTAG","FTR")
 Lig20 <- select(Prim20,"Date","HomeTeam","AwayTeam","FTHG","FTAG","FTR")
 
-#4 Haremos un único data frame con los datos de las tres temporadas que contengan las columnas seleccionadas anteriormente. 
-#Necesitaremos que los datos de las columnas sean todos del mismo tipo, así que haremos un único formato para la fecha.
+#4 Haremos un ?nico data frame con los datos de las tres temporadas que contengan las columnas seleccionadas anteriormente.
+#Necesitaremos que los datos de las columnas sean todos del mismo tipo, as? que haremos un ?nico formato para la fecha.
 
 Lig18 <- mutate(Lig18, Date = as.Date(Date,"%d/%m/%y"))
 Lig19 <- mutate(Lig19, Date = as.Date(Date,"%d/%m/%Y"))
@@ -42,3 +60,5 @@ Lig20 <- mutate(Lig20, Date = as.Date(Date,"%d/%m/%Y"))
 #El data frame que resulta es el siguiente:
 
 PrimDiv <- rbind(Lig18,Lig19,Lig20)
+
+
