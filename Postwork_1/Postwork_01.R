@@ -7,12 +7,12 @@
 
 
 # Descargamos los datos del servidor si no los tenemos
-if (file.exists("./data/SP1.csv") == FALSE){
+if (file.exists("./data/DataPostwork1/SP1.csv") == FALSE){
     url <- "https://www.football-data.co.uk/mmz4281/1920/SP1.csv"
     download.file(url = url, destfile = "./data/SP1.csv", mode = "wb")
 }
 
-golesAnotados <- read.csv("./data/SP1.csv",
+golesAnotados <- read.csv("./data/DataPostwork1/SP1.csv",
                  colClasses = c(rep("NULL",5),rep("integer",2),rep("NULL",98)))
 
 
