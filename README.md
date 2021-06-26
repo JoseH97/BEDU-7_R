@@ -10,5 +10,7 @@ Trabajos de postwork en R del curso análisis de datos en R
      - Correo: montseemoreno@hotmail.com
   - Integrante: José Hazel Ortiz Celis
      - Correo: hortiz97@gmail.com
+  - Integrante: Ingrid Pérez López
+     - Correo: ingridperezlea@gmail.com 
 
   
