@@ -75,7 +75,9 @@ Ligas <- lapply(Ligas, mutate, Date = as.Date(Date,"%d/%m/%y"))
 
 Ligas <- do.call(rbind, Ligas)
 
+# Guardamos Ligas en un archivo csv para desoues utilizarlo en el postwork2
+write.csv(Ligas,"./Data/DataPostwork3/Ligas.csv",row.names = FALSE)
+
 # opcional
 #PrimDiv <- rbind(Lig18,Lig19,Lig20)
-
 
