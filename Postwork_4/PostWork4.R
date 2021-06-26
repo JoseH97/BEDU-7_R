@@ -100,14 +100,17 @@ print(coefTable.BoostrapSd)
 
 
 # Con base en los resultados mostrados en coefTable.BoostrapMean (boostrapCoef.jpg)
+# variables independientes si y solo si p(x_i,y_j) = p(x_i)p(y_j)
+# variables dependientes si y solo si p(x_i,y_j) = p(x_i|y_j)p(y_j)
 # Variables independientes :
 # (Local=0,Visitante=0), (Local=1,Visitante=0), (Local=2,Visitante=0) ,(Local=3,Visitante=0)
 # (Local=0,Visitante=1), (Local=1,Visitante=1), (Local=2,Visitante=1)
 
 # Variables dependientes : son las variables que sobran
 
-# El criterio para ver la dependencia es que la estimacion de Estimamos p(x_i,y_j)/(p(x_i)*p(y_j))
-# se cercano a 1 +- 0.09, si la desviacion estandar es mayor que 0.1 no se toma
+# El criterio para ver la dependencia es que la estimacion de p(x_i,y_j)/(p(x_i)*p(y_j))
+# sea cercano a 1 +- 0.09, si la desviacion estandar es mayor que 0.1 no se toma
+
 
 
 
