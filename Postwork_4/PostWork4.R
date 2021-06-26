@@ -55,7 +55,7 @@ n <- dim(golesAnotados)[1] # cantidad de datos que se van a remuestrear en una m
 # Paso 1: calcular los coefiecientes para cada muestra
 
 t.golesBoostrap <- replicate(k, {
-    # muestreamos con remplezo de goles de local y visitante
+    # muestreamos los goles de local y visitante
     golesAnotados.perSample <- data.frame("FTHG" = sample(golesAnotados$FTHG,n,replace = FALSE),
                                           "FTAG" = sample(golesAnotados$FTAG,n,replace = FALSE))
 
