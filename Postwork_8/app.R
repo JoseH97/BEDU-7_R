@@ -13,6 +13,7 @@ setwd("*/BEDU-7_R/Data/DataPostwork8")
 data <- read.csv("match.data.csv")
 data <- data.frame(data)
 
+
 #ui
 ui <-   dashboardPage(
             skin = "purple",
@@ -40,7 +41,7 @@ ui <-   dashboardPage(
                                 titlePanel(h3("Gráficos de barras", align = "center", style = "font-family: 'times'; font-si16pt")),
                                 selectInput("x", "Selecciona el valor de x",
                                             choices = c("Score Locales" = "home.score", "Score Visitantes" = "away.score")),
-                                box(plotOutput("plot2", height = 600, width = 600) )
+                                box(plotOutput("plot2", height = 700, width = 700) )
                                 
                             )
                     ),
@@ -69,9 +70,9 @@ ui <-   dashboardPage(
                     # Imagenes de las gráficas de los factores de ganancia mínimo y máximo
                     tabItem(tabName = "img",
                             fluidRow(
-                                titlePanel(h3("Factores de ganancia mínima", align ="center",  style = "font-family: 'times'; font-si16pt")),
-                                img( src = "momios1.png", height = 350, width = 400, style="display: block; margin-left: auto; margin-right: auto;"),
                                 titlePanel(h3("Factores de ganancia máxima", align ="center",  style = "font-family: 'times'; font-si16pt")),
+                                img( src = "momios1.png", height = 350, width = 400, style="display: block; margin-left: auto; margin-right: auto;"),
+                                titlePanel(h3("Factores de ganancia promedio", align ="center",  style = "font-family: 'times'; font-si16pt")),
                                 img( src = "momios2.png", height = 350, width = 400, style="display: block; margin-left: auto; margin-right: auto;")
                                     )
                             )
@@ -90,18 +91,17 @@ server <- function(input, output) {
      #Grafico de barras
      output$plot2 <- renderPlot({
          
-        x <- data[,input$x]
-        fw <- data[,"away.team"]
+        v <- data[,input$x]
         
-        g <- ggplot(data=data, aes(x, fill = x)) + 
+        g <- ggplot(data=data, aes(v, v)) + 
         geom_bar(stat="identity", position="stack", fill = "dodgerblue4") +
-        facet_wrap(~fw) +
+        facet_wrap(~away.team) +
         theme_replace() +
+        labs(x = input$x, y = "Goles")
         theme(axis.title = element_text(face="bold", family="Times New Roman", colour="darkslategray")) + # Tamaño de los títulos de los ejes
         theme(axis.text.x = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1),
               axis.text.y = element_text(face = "bold", color="darkslategray4", size = 10, vjust = 1))
         g
-        #ggplotly(g)
         })
 
      
