@@ -7,25 +7,18 @@ library(shinydashboard)
 library(shinythemes)
 
 #Establecemos el directorio
-setwd("C:/Users/LEA_M/Documents/BEDU- SANTANDER/Fase 2/BEDU-7_R/Postwork_8/files")
+setwd("*/BEDU-7_R/Data/DataPostwork8")
+
 
 #Llamamos a nuestros datos
 data <- read.csv("match.data.csv")
 data <- data.frame(data)
 
-
-# df <- create.fbRanks.dataframes(scores.file = "match.data.csv")
-# teams <- df$teams; scores <- df$scores
-# head(teams, n = 2L); dim(teams); head(scores, n = 2L); dim(scores)
-
 #ui
-ui <- 
-    
-    fluidPage(
-        
-        dashboardPage(
+ui <-   dashboardPage(
+            skin = "purple",
             
-            dashboardHeader(title = "Basic dashboard"),
+            dashboardHeader(title = "Football Data"),
             
             dashboardSidebar(
                 
@@ -81,13 +74,12 @@ ui <-
                                 img( src = "momios1.png", height = 350, width = 350),
                                 titlePanel(h3("Factores de ganancia máxima")),
                                 img( src = "momios2.png", height = 350, width = 350)
+                                    )
                             )
-                    )
-                    
                 )
             )
         )
-    )
+    
 
 #De aquí en adelante es la parte que corresponde al server
 
@@ -124,3 +116,4 @@ server <- function(input, output) {
 
 
 shinyApp(ui, server)
+
