@@ -7,17 +7,12 @@ library(shinydashboard)
 library(shinythemes)
 
 #Establecemos el directorio
-setwd("C:/Users/LEA_M/Documents/BEDU- SANTANDER/Fase 2/BEDU-7_R/Data/DataPostwork8")
+setwd("*/BEDU-7_R/Data/DataPostwork8")
 
 #Llamamos a nuestros datos
 data <- read.csv("match.data.csv")
 data <- data.frame(data)
 
-
-# df <- create.fbRanks.dataframes(scores.file = "match.data.csv")
-# teams <- df$teams; scores <- df$scores
-# head(teams, n = 2L); dim(teams); head(scores, n = 2L); dim(scores)
-#
 #ui
 ui <-   dashboardPage(
             skin = "purple",
