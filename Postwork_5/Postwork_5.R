@@ -1,5 +1,5 @@
-#Se inicia la semilla
-setwd("C:/Users/hazel/Documents/Onceavo/BeduR/S5/Postwork")
+#Se fija el directorio
+setwd("*/BEDU-7_R/Data/DataPostwork5")
 #Se inicia la libreria
 library(dplyr)
 #Se inician las URL de los archivos
