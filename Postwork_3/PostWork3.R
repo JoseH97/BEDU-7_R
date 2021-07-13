@@ -44,34 +44,54 @@ library(ggplot2)
 library(plotly)
 
 # Un gráfico de barras para las probabilidades marginales estimadas del número de goles que anota el equipo de casa.
-gl <- ggplot(data=locales, aes(x=Goles, y=Probabilidad)) +
-    geom_bar(stat="identity", position="stack", fill = "darkslategrey") +
-    ggtitle('     Probabilidades de los números de goles
-          \       anotados por equipo local') +
+gl <- ggplot(data=locales, aes(x=Goles, y=Probabilidad)) + 
+    geom_bar(stat="identity", position="stack", fill = "dodgerblue4") +
+    ggtitle('  Probabilidades de los números de goles
+          \       anotados por equipo local\ ') +
     theme_replace()+
-    theme(plot.title = element_text(face = "bold", size=10, colour = "darkslategray")) +
-    theme(axis.text.x = element_text(face = "bold", color="lightsteelblue4" , size = 10, hjust = 1),
-          axis.text.y = element_text(face = "bold", color="lightsteelblue4" , size = 10, hjust = 1))
+    theme(plot.title = element_text(family="Times New Roman",
+                                    size=12, #Tamaño de la letra del título
+                                    vjust=2, #Justificación vertical, para separarlo del gráfico
+                                    face="bold", #Letra negrita
+                                    color="darkslategray"))+ #Color del texto
+    theme(axis.title = element_text(face="bold", family="Times New Roman", colour="darkslategray")) + # Tamaño de los títulos de los ejes
+    theme(axis.text.x = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1),
+          axis.text.y = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1))
+gl
 ggplotly(gl)
 
 
 # Un gráfico de barras para las probabilidades marginales estimadas del número de goles que anota el equipo visitante.
-gv <- ggplot(data=visitantes, aes(x=Goles, y=Probabilidad)) +
-    geom_bar(stat="identity", position="stack", fill = "darkslategrey") +
-    ggtitle('     Probabilidades de los números de goles
-          \       anotados por equipo visitante') +
+gv <- ggplot(data=visitantes, aes(x=Goles, y=Probabilidad)) + 
+    geom_bar(stat="identity", position="stack", fill = "firebrick3") +
+    ggtitle('Probabilidades de los números de goles
+          \   anotados por equipo visitante') +
     theme_replace()+
-    theme(plot.title = element_text(face = "bold", size=10, colour = "darkslategray")) +
-    theme(axis.text.x = element_text(face = "bold", color="lightsteelblue4" , size = 10, hjust = 1),
-          axis.text.y = element_text(face = "bold", color="lightsteelblue4" , size = 10, hjust = 1))
+    theme(plot.title = element_text(family="Times New Roman",
+                                    size=12, #Tamaño de la letra del título
+                                    vjust=2, #Justificación vertical, para separarlo del gráfico
+                                    face="bold", #Letra negrita
+                                    color="darkslategray"))+ #Color del texto
+    theme(axis.title = element_text(face="bold", family="Times New Roman", colour="darkslategray")) + # Tamaño de los títulos de los ejes
+    theme(axis.text.x = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1),
+          axis.text.y = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1))
+gv
 ggplotly(gv)
 
 # Un HeatMap para las probabilidades conjuntas estimadas de los números de goles que anotan el equipo de casa y el equipo visitante en un partido.
-ggp <- ggplot(local.visit.prop, aes(Local, Visitante)) +
-    geom_tile(aes(fill = Probabilidad)) +
-    ggtitle("                Probabilidades conjuntas") +
-    theme(plot.title = element_text(face = "bold", size=10, colour = "darkslategray")) +
-    theme(axis.text.x = element_text(face = "bold", color="darkslategray4" , size = 10, hjust = 1),
-          axis.text.y = element_text(face = "bold", color="darkslategray4" , size = 10, hjust = 1)) +
-    scale_fill_gradient(low = "grey", high = "darkslategray")
+ggp <- ggplot(local.visit.prop, aes(Local, Visitante)) +                           
+    geom_tile(aes(fill = Probabilidad)) + 
+    ggtitle("  Probabilidades conjuntas") +
+    theme_replace()+
+    scale_fill_gradient(low = "cornflowerblue", high = "royalblue4")+
+    theme(plot.title = element_text(family="Times New Roman",
+                                    size=12, #Tamaño de la letra del título
+                                    vjust=2, #Justificación vertical, para separarlo del gráfico
+                                    face="bold", #Letra negrita
+                                    color="darkslategray"))+ #Color del texto
+    theme(axis.title = element_text(face="bold", family="Times New Roman", colour="darkslategray")) + # Tamaño de los títulos de los ejes
+    theme(axis.text.x = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1),
+          axis.text.y = element_text(face = "bold", color="darkslategray4", size = 10, hjust = 1)
+    )
+ggp
 ggplotly(ggp)

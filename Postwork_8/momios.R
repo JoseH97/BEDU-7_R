@@ -5,7 +5,7 @@ library(ggplot2)
 
 # Colocar el directorio de trabajo según corresponda
 
-setwd("C:/Users/LEA_M/Documents/BEDU- SANTANDER/Fase 2/BEDU-7_R/Postwork_8")
+setwd("*/BEDU-7_R/Data/DataPostwork8")
 
 # Descarga de archivos
 # https://www.football-data.co.uk/spainm.php
@@ -40,7 +40,7 @@ download.file(url = u1920, destfile ="SP1-1920.csv", mode = "wb")
 # Procesamiento de datos
 
 #lista <- lapply(lista, select, Date:FTR)
-setwd("C:/Users/LEA_M/Documents/BEDU- SANTANDER/Fase 2/BEDU-7_R/Postwork_8/files")
+setwd("*/BEDU-7_R/Data/DataPostwork8")
 
 d1011 <- read.csv("SP1-1011.csv")
 d1112 <- read.csv("SP1-1112.csv")
